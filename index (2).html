@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sabiduría Dorada – Aprende Finanzas para tu Futuro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SEO -->
+  <meta name="description" content="Educación financiera sencilla para adultos mayores. Aprende a manejar tu dinero, usar apps y evitar fraudes con Sabiduría Dorada del SENA.">
+  <meta name="keywords" content="educación financiera, adultos mayores, fraudes, banca digital, Sabiduría Dorada, SENA">
+
+  <!-- Ícono -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" type="image/png">
+
+  <style>
+    :root {
+      --main-gold: #ffd54f;
+      --main-blue: #01487E;
+      --soft-blue: #f7f9fa;
+      --accent: #fbc02d;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--soft-blue);
+      color: #222;
+      scroll-behavior: smooth;
+      line-height: 1.6;
+      font-size: 1.05em;
+    }
+
+    header {
+      background: linear-gradient(90deg, #ffe082 0%, #ffd54f 100%);
+      padding: 50px 12px 80px 12px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      z-index: 2;
+      overflow: hidden;
+    }
+
+    .parallax-bg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 160%;
+      background: url('https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1200&q=80') center top/cover no-repeat;
+      opacity: 0.13;
+      pointer-events: none;
+      transform: translateY(0);
+      transition: transform 0.4s;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255,255,255,0.97);
+      box-shadow: 0 1px 10px rgba(1,72,126,0.08);
+      display: flex;
+      justify-content: center;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 26px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a {
+      color: var(--main-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.08em;
+      padding: 18px 0 14px 0;
+      border-bottom: 2.5px solid transparent;
+      transition: color 0.2s, border-bottom 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+      border-bottom: 2.5px solid var(--accent);
+    }
+
+    header h1 {
+      margin: 0 0 10px 0;
+      font-size: 2.9em;
+      color: var(--main-blue);
+      letter-spacing: 2px;
+      font-weight: 900;
+      text-shadow: 0 2px 12px #fff8e1;
+      z-index: 2;
+      position: relative;
+    }
+
+    header p {
+      font-size: 1.28em;
+      color: #6b5b1e;
+      margin-bottom: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-btn {
+      background: var(--main-blue);
+      color: #fff;
+      font-size: 1.25em;
+      padding: 15px 48px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      margin-top: 18px;
+      font-weight: 700;
+      box-shadow: 0 6px 24px rgba(1,72,126,0.13);
+      transition: background 0.2s, color 0.2s, transform 0.18s;
+      z-index: 2;
+    }
+
+    .cta-btn:hover {
+      background: var(--accent);
+      color: var(--main-blue);
+      transform: scale(1.04);
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 60px auto 0 auto;
+      padding: 0 15px 30px 15px;
+    }
+
+    .section-title {
+      color: var(--main-blue);
+      font-weight: 800;
+      font-size: 2.1em;
+      margin-bottom: 28px;
+      text-align: center;
+      text-shadow: 0 1px 0 #ffe082;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 36px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px rgba(1,72,126,0.10), 0 1.5px 8px rgba(251,192,45,0.07);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      opacity: 0;
+      transform: translateY(60px) scale(0.97);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      transition: opacity 0.6s, transform 0.6s;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 22px 20px 18px 20px;
+      flex: 1;
+    }
+
+    .card-content h2 {
+      color: var(--main-blue);
+      margin-top: 0;
+      font-size: 1.22em;
+    }
+
+    .destacado {
+      background: #f7dc6f;
+      color: var(--main-blue);
+      border-left: 6px solid var(--accent);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .estafa, .tipo-estafa {
+      padding: 9px 12px;
+      border-radius: 7px;
+      margin-bottom: 10px;
+      font-size: 0.98em;
+    }
+
+    .estafa {
+      background: #fff4e5;
+      border-left: 6px solid #f39c12;
+    }
+
+    .tipo-estafa {
+      background: #f8f8fc;
+      border-left: 4px solid #e74c3c;
+    }
+
+    .contacto-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #eef6ff;
+      padding: 32px 18px;
+      border-radius: 18px;
+      margin-top: 36px;
+      box-shadow: 0 2px 14px rgba(1,72,126,0.08);
+    }
+
+    .contacto-block h2 {
+      color: var(--main-blue);
+      font-size: 1.35em;
+      margin-bottom: 7px;
+    }
+
+    .contacto-block p {
+      font-size: 1.13em;
+      color: #333;
+    }
+
+    .contacto-block strong {
+      color: #f39c12;
+    }
+
+    .footer {
+      background: var(--main-blue);
+      color: white;
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.95em;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .cards-grid { grid-template-columns: 1fr; }
+      header h1 { font-size: 2.2em; }
+      .section-title { font-size: 1.5em; }
+    }
+
+    @media (max-width: 600px) {
+      header { padding: 32px 4px 48px 4px; }
+      .section { padding: 0 6px 20px 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="parallax-bg" id="parallax-bg"></div>
+    <h1>Sabiduría Dorada</h1>
+    <p>¡Aprende a manejar tu dinero, protégete de fraudes y vive con tranquilidad!<br>
+      <span style="font-size:1.08em;font-weight:bold;color:#f39c12;">Inscríbete hoy y transforma tu futuro financiero.</span>
+    </p>
+    <button class="cta-btn" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">¡Quiero aprender!</button>
+  </header>
+  <nav>
+    <ul>
+      <li><a href="#porque" class="active">¿Por qué aprender?</a></li>
+      <li><a href="#conceptos">Conceptos</a></li>
+      <li><a href="#apps">Apps y Tips</a></li>
+      <li><a href="#estafas">Evita estafas</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- Sección 1: Motivacional -->
+  <section class="section" id="porque">
+    <div class="section-title">🌟 ¿Por qué aprender con Sabiduría Dorada?</div>
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1515168833906-d2a3b82b302c?auto=format&fit=crop&w=600&q=80" alt="Adultos aprendiendo finanzas">
+        <div class="card-content">
+          <div class="destacado">¡Nunca es tarde para aprender!</div>
+          <ul>
+            <li>Mejora tu calidad de vida y la de tu familia.</li>
+            <li>Evita fraudes y protege tus ahorros.</li>
+            <li>Gana independencia y tranquilidad financiera.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.pexels.com/photos/3184396/pexels-photo-3184396.jpeg?auto=compress&w=600&q=80" alt="Adultos felices aprendiendo">
+        <div class="card-content">
+          <div class="destacado" style="background:#f7f7f7;border-left:6px solid #01487E;color:#01487E;">
+            <span style="color:#fbc02d;">✔</span> Enseñanza cercana y práctica
+          </div>
+          <ul>
+            <li>Aprende paso a paso y a tu ritmo.</li>
+            <li>Material sencillo y ejemplos reales.</li>
+            <li>¡Formamos comunidad!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 2: Conceptos -->
+  <section class="section" id="conceptos">
+    <div class="section-title">💡 Conceptos básicos que te empoderan</div>
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-img" src="https://images.pexels.com/photos/3182763/pexels-photo-3182763.jpeg?auto=compress&w=600&q=80" alt="Clase de finanzas mayores">
+        <div class="card-content">
+          <h2>Conceptos clave</h2>
+          <div class="destacado" style="background:#eef6ff;color:#01487E;">
+            <strong>💰 Ahorro:</strong> Guarda parte de tu dinero para el futuro.<br>
+            <strong>📥 Ingreso:</strong> El dinero que recibes.<br>
+            <strong>📊 Presupuesto:</strong> Organiza lo que recibes y gastas.<br>
+            <strong>🛒 Gasto:</strong> Lo que usas para pagar cosas.
+          </div>
+          <h2 style="font-size:1.07em; margin-top:18px;">Tips de organización</h2>
+          <ul>
+            <li>Anota tus gastos cada semana.</li>
+            <li>No gastes más de lo que recibes.</li>
+            <li>Guarda siempre un poco para emergencias.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Persona mayor haciendo cuentas">
+        <div class="card-content">
+          <h2>¿Qué aprenderás?</h2>
+          <ul>
+            <li>Ahorrar y organizar tus gastos.</li>
+            <li>Usar aplicaciones bancarias.</li>
+            <li>Detectar fraudes y protegerte.</li>
+            <li>¡Y mucho más!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 3: Apps y Tips -->
+  <section class="section" id="apps">
+    <div class="section-title">📲 Apps útiles y consejos para ti</div>
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=600&q=80" alt="Adultos usando aplicaciones">
+        <div class="card-content">
+          <ul>
+            <li><strong>Banca móvil:</strong> Consulta saldo, transfiere, paga servicios.</li>
+            <li><strong>Nequi / Daviplata:</strong> Recibe dinero fácil y sin tarjeta.</li>
+            <li><strong>Mis Finanzas:</strong> Lleva control de gastos.</li>
+            <li><strong>WhatsApp:</strong> Recibe alertas y ayuda del banco.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&w=600&q=80" alt="Aprendiendo en grupo">
+        <div class="card-content">
+          <h2>Consejos útiles</h2>
+          <ul>
+            <li>Pide ayuda si no sabes usar una app.</li>
+            <li>No compartas tus claves con nadie.</li>
+            <li>Usa solo apps oficiales del banco.</li>
+            <li>¡Aprende en nuestros talleres presenciales!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 4: Fraudes y estafas -->
+  <section class="section" id="estafas">
+    <div class="section-title">🔴 Evita estafas y cuida tu dinero</div>
+    <div class="cards-grid">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="Seguridad y prevención de fraudes">
+        <div class="card-content">
+          <div class="estafa">
+            Una estafa es cuando una persona o grupo intenta engañarte para quitarte tu dinero, usando mentiras o manipulaciones.
+          </div>
+          <h2 style="font-size:1.07em; margin-top:18px;">Tipos de estafas comunes</h2>
+          <div class="tipo-estafa">
+            <strong>📞 Llamadas falsas:</strong> Te dicen que ganaste premios o que hay problemas con tu cuenta para robarte información.
+          </div>
+          <div class="tipo-estafa">
+            <strong>💬 Mensajes por WhatsApp o SMS:</strong> Te piden códigos, claves o que hagas clic en enlaces peligrosos.
+          </div>
+          <div class="tipo-estafa">
+            <strong>🧑‍💼 Suplantación de funcionarios:</strong> Se hacen pasar por el banco o gobierno y piden tus datos.
+          </div>
+          <div class="tipo-estafa">
+            <strong>👨‍👩‍👧‍👦 Supuestos familiares en problemas:</strong> Dicen que un familiar necesita ayuda urgente y piden dinero.
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&w=600&q=80" alt="Prevención y ayuda">
+        <div class="card-content">
+          <h2>Recomendaciones</h2>
+          <ul>
+            <li>No respondas llamadas sospechosas.</li>
+            <li>No compartas tus datos personales ni claves.</li>
+            <li>No prestes tu cuenta a desconocidos.</li>
+            <li>Si tienes dudas, ¡consulta a alguien de confianza!</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section class="section" id="contacto">
+    <div class="section-title">Contáctanos e inscríbete</div>
+    <div class="contacto-block">
+      <h2>Proyecto Sabiduría Dorada <span style="font-size:1.1em;">SENA</span></h2>
+      <p>📍 Chapinero, Bogotá<br>
+      📞 <strong>123-456-7890</strong><br>
+      ✉️ <strong>sabiduria@correo.com</strong></p>
+      <button class="cta-btn" onclick="window.open('mailto:sabiduria@correo.com','_blank')">¡Quiero inscribirme!</button>
+    </div>
+  </section>
+
+  <div class="footer">
+    Proyecto Sabiduría Dorada – Talleres presenciales SENA<br>
+    © 2025 | Todos los derechos reservados
+  </div>
+
+  <!-- BOTÓN WHATSAPP -->
+  <a href="https://wa.me/573001112223" target="_blank" style="
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#25D366;
+    color:white;
+    border-radius:50%;
+    width:56px;
+    height:56px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.2);
+    text-decoration:none;
+    z-index:1000;">💬</a>
+
+  <!-- SCRIPTS -->
+  <script>
+    // Parallax
+    window.addEventListener('scroll', function() {
+      const pb = document.getElementById('parallax-bg');
+      if(pb) pb.style.transform = 'translateY('+(window.scrollY*0.25)+'px)';
+    });
+
+    // Cards animación
+    function revealCards() {
+      document.querySelectorAll('.card').forEach(function(card) {
+        const rect = card.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 60) card.classList.add('visible');
+      });
+    }
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('DOMContentLoaded', revealCards);
+
+    // Menú activo
+    const sections = ['porque','conceptos','apps','estafas','contacto'];
+    window.addEventListener('scroll', () => {
+      let idx = 0;
+      for(let i=0; i<sections.length; i++) {
+        const sec = document.getElementById(sections[i]);
+        if(window.scrollY+120 >= sec.offsetTop) idx = i;
+      }
+      document.querySelectorAll('nav a').forEach((a,i)=>a.classList.toggle('active',i===idx));
+    });
+  </script>
+</body>
+</html>
